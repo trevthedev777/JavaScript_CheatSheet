@@ -15,7 +15,7 @@ console.log(myVarAgain);
 var myVarThree  = "a Variable var";
 console.log(myVarThree);
 
-// The let keyword: Declares a JS variable that has a block scope, it can be reassigned but not redeclared,
+// THE LET KEYWORD: Declares a JS variable that has a block scope, it can be reassigned but not redeclared,
 // This means that the value or the variable is only allowed to be used in the declared block of code its intended for
 
 // Block Scope Example:
@@ -50,3 +50,71 @@ if (false) {
     console.log(myLatestVar)
     myLatestVar = "See How I change it?";
     console.log(myLatestVar)
+
+
+
+// THE CONST KEYWORD: Declares a JavaScript variable that has block scope, and which cannot be reassigned or redeclared.
+// const is an abbreviation for constant
+// const variables are typically used to store data that won't be modified at any point of the code - things like :
+//     - Settings
+//     - URL's which might be called
+//     - Filenames
+//     - Likes/comments etc
+
+//  You can define a variable with const in the exact same way as you would using let, and it will behave almost identically:
+    const google = "https://www.google.com";
+    console.log(google);
+
+// const variables are similar to let variables asa thet are block scope level declarations, there are just a fww jey differences:
+//  1) Unlike l;let variables, const variables can't be redclared or reassigned, attepting to change it will throw an error
+// You will need to comment out the errors to display the code correctly through the console
+        const url = "www.google.com";
+        console.log(url);
+        // =====================================
+        // uncomment this code to see the errors:
+        // =====================================
+        // const url = "www.youtube.com";  // SyntaxError: Identifier 'url' has already been declared
+        // console.log(url);
+        // url = "www.google.com";         // TypeError: Assignment to constant variable.
+        // console.log(url);
+
+        const number = 4;
+        console.log(number);
+        // number = number + 2;            // TypeError: Assignment to constant variable.
+        // console.log(number);
+        // number += 2;                    // TypeError: Assignment to constant variable.
+        // console.log(number);
+        
+//  2) Unlike let Variables, constants can't be decalred woithout setting a value
+        // let url; // OK (url, is undefinied byt declared)
+        // const url; // SyntaxError: Missing Initilizer in const declareation
+
+//  3) Arrays and objects stored in constants can be modified, but you can't reassign a new object or array to the same constant:
+    // Define a const Object:
+    const trevor  = {
+        name: "Trevor",
+        age: 32,
+        location: "Canada"
+    };
+    console.log(trevor);
+    // Change values:
+    trevor.age = 31; // we're changing the objects property, not the constant itself
+    console.log(trevor.age);
+    trevor["Birthday"] = "November 7"; // we're modifying the object, not the constant itself
+    console.log(trevor["Birthday"]);
+
+    // trevor = {
+    //     name: "Trevor",
+    //     age: 31,
+    //     location: "Ireland"
+    // };                  // NOT ok, we're changing the constant's value
+    // console.log(trevor);
+
+    // Define a const array:, 
+    const cars = ["Saab", "BMW", "Merccedez Benz"];
+    console.log(cars);
+
+    cars[0] = "Toyota";  // Ok, we're updating the array element, not the constant itself
+    cars.push("Audi");   // Ok, we're updating the array, not the constant itself
+    cars = ["Toyota", "Volvo", "BMW", "Audi"];  // NOT ok, we're changing the constant's value
+    
