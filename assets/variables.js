@@ -116,5 +116,93 @@ if (false) {
 
     cars[0] = "Toyota";  // Ok, we're updating the array element, not the constant itself
     cars.push("Audi");   // Ok, we're updating the array, not the constant itself
-    cars = ["Toyota", "Volvo", "BMW", "Audi"];  // NOT ok, we're changing the constant's value
+    // cars = ["Toyota", "Volvo", "BMW", "Audi"];  // NOT ok, we're changing the constant's value
     
+
+// THE VAR KEYWORD: Declares a JavaScript variable that has global scope, and which can freely be reassigned or redeclared.
+// In modern JavaScript it's usually considered a bad practice to use this declaration, because it creates a variable which has global scope,
+// which means it can be unintentionally changed outside of its own scope
+
+// Variables declared with var behave significantly different than their const and let counterparts. The most significant difference is that variables declared with var are accessible outside the scope in which they are declared. This means that they can be inadvertently overwritten and can create bugs in your code that are difficult to detect
+
+    // Remove comment to see the error
+    // var i = 0;
+
+    // for(var i = 0. i <= 5; i++) {
+    //     console.log("Inside the loop... ", i);
+    // } 
+
+    // console.log("Outside the loop: ", i);
+
+    // The code produces the following output:
+    // Inside the loop: 0
+    // Inside the loop: 1
+    // Inside the loop: 2
+    // Inside the loop: 3
+    // Inside the loop: 4
+    // Inside the loop: 5
+    // Outside the loop: 6
+    // Do you see the problem? If not, you're not alone, but look closely at what happened: On line 1 we declared a variable, i, using var, and gave it a value of 0. Then on line 3 we initiated a for loop, declaring a variable i beginning with zero and iterating through 5, incrementing i after each iteration. When the i in the loop is equal to 5, iteration stops, and the final increment takes place (i++), incrementing it to 6. However, when we logged i to the console outside the loop, i has a value of 6! It has been overwritten by the loop's i. This is because variables declared with var are not restricted with regard to being reassigned, redeclared, or reused in another scope.
+
+    // The first variable declared on line 1 should have remained 0 within the global scope, that is, the code outside of the loop, because the loop's code block is bounded by the curly braces. Nothing that happened inside that loop should have affected anything outside the loop, but it did, inadvertently overwriting the original i variable and then incrementing it each time the loop executed. The original variable, which should have maintained a value of 0 was lost. If you were to declare the first variable with let or const, you would have received an error when you tried to redeclare it with the same name in the for loop, preventing this issue. Here are some more examples to drive the point home:
+
+    // Allowed: This is ok because the variable defined for use in the for loop is declared with let, which means it won't affect the outer one due to its scope being restricted to the loop.
+    let j = 0;
+
+    for (let j = 0; j <= 5; j++) {
+        console.log("Inside the loop... ", j);
+    }
+      console.log("Outside the loop: ", j);
+
+
+    //   Global and Local Scopes
+    // Global Scope:
+    // In JavaScript, any code that exists at the top level of your application, that is, anything that is not inside any function, loop, conditional statement and so on, has global scope.
+
+    // Local Scope:
+    // Any code that exists inside a set of curly braces, for example, code contained within the opening and closing braces of a loop, a conditional statement, or a function, has local scope.
+    let globalVar = "My global variable"
+    // globalVar has global scope
+
+    for (let i = 0; i < 5; i++) {
+    let localVar = "myLocalVar";
+    console.log(i);
+
+    // Both i and localVar have local scope
+    };
+
+    // In the above, globalVar is accessible everywhere, even inside the loop. It can't be redeclared since it was declared with let, but it can be accessed, updated and manipulated inside the loop or anywhere else in the code. localVar and i, on the other hand, are not accessible anywhere outside the closing bracket of the for loop. Once the for loop is finished, those variables no longer exist. You can think of scope as simply "the current block of code". If you're not in a designated code block surrounded by curly braces, you are looking at the global scope. This goes for loops, functions, conditionals, and other types of JavaScript constructs:
+
+    // Global scope
+
+    if (...) {
+  // Local scope
+    };
+
+    // More global scope
+
+    function myFunction() {
+  // Local scope
+    };
+
+    // More global scope
+
+    for (...) {
+    // Local scope
+    };
+
+    // There is a third type of scope called block scope, too. This is similar to local scope, but refers specifically to the code block the variable exists in. This is relevant when there is nesting in your code, where a variable inside a function might be local, but inside an if statement or loop within the function, anything declared is local only to the loop code blocks. Another way to think about it is that the furthest level out in your code is global scope, the next level in is local, but if within the local scope there is another level of code like a loop, if statement, etc, then the "local" scope in the function is now somewhat like the function's "global" scope, and anything further in is block scope. If this seems confusing, take a look at this example:
+
+    let globalVar = 'a global variable';
+
+    function myFunction() {
+    let localVar = 'a local variable';
+    
+    if (localVar) {
+        let blockVar = 'a block-scoped variable';
+    } else {
+        let otherBlockVar = 'a different block-scoped variable';
+    }
+    };
+
+    // Above, the two block-scoped variables are accessible only within their respective code blocks, bounded by the curly braces. The local variable is accessible anywhere in the function, and the global variable is accessible anywhere in the entire script. Scope is not just a construct of JavaScript either. As you learned in the comparative programming module, Python also uses code blocks, but instead of being bounded by curly braces they are bounded by the indentation level. That means that in Python, anything at the outermost indentation level is considered global and anything indented is local to that specific indentation level. As you work with these languages more and more, scope will become more clear. When you're writing code, remember to always keep in mind the scope in which you're writing, especially when defining variables. Your code's functionality is dependent on everything having the proper scope.
