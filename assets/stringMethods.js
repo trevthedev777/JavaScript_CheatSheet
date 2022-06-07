@@ -59,10 +59,10 @@ object.length;                // Returns the length of a string
 object.charAt();              // Returns the character at the specified index (position)
 object.charCodeAt();          // Returns the Unicode of the character at the specified index
 object.concat();              // Joins two or more strings, and returns a new joined strings
-object.endsWith();            // 	Checks whether a string ends with specified string/characters
+object.endsWith();            // Checks whether a string ends with specified string/characters
 object.fromCharCode();	      // Converts Unicode values to characters
 object.includes();	          // Checks whether a string contains the specified string/characters
-object.indexOf();	          // 	Returns the position of the first found occurrence of a specified value in a string
+object.indexOf();	          // Returns the position of the first found occurrence of a specified value in a string
 object.lastIndexOf();	      // Returns the position of the last found occurrence of a specified value in a string
 object.localeCompare();	      // Compares two strings in the current locale
 object.match();               // Searches a string for a match against a regular expression, and returns the matches
