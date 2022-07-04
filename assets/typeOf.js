@@ -24,3 +24,13 @@ if (typeof myData === "string") {
 
 // Knowing which data type you're working with is often critical to understanding how to move forward with your code. Whenever you need to know the type of a piece of data, whether it's to perform some logic conditionally or to better understand how you can navigate or manipulate the data, remember that the typeof operator is always there.
 
+// Challenge
+let itmOne = 10;
+let itmTwo = '20';
+let itmThree = true;
+
+console.log(typeof itmOne);
+console.log(typeof itmTwo);
+console.log(typeof itmThree);
+console.log(typeof (itmOne +itmTwo));
+
